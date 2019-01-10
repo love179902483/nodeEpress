@@ -1,0 +1,24 @@
+{
+  "name": "express_server",
+  "version": "1.0.0",
+  "description": "for chart",
+  "main": "app.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/love179902483/nodeEpress.git"
+  },
+  "keywords": [
+    "express"
+  ],
+  "author": "qinyu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/love179902483/nodeEpress/issues"
+  },
+  "homepage": "https://github.com/love179902483/nodeEpress#readme"
+}
