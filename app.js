@@ -8,12 +8,14 @@ const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const initAll = require('./services/initProject/init.service')
+const tokenVerify =require('./services/user/user.login.service')
 
 global.globalAllUsers = []
 initAll.getUsers()
 
 
-app.use(cors())
+// app.use(cors())
+// app.options("*",cors())
 app.use(bodyParser.urlencoded({
     extended: true
 }));
@@ -23,8 +25,8 @@ app.use(cookieParser());//运用cookie解析的中间件
 // app.use(bodyParser.text());
 
 
-app.use('/websocket',websocketRouter)
-app.use('/user',userRouter)
+app.use('/websocket',cors(),tokenVerify.verifyToken,websocketRouter)
+app.use('/user',cors(),userRouter)
 
 
 

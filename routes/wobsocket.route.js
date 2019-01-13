@@ -2,10 +2,9 @@ const express = require('express')
 const websocketRouter =express.Router()
 
 
-websocketRouter.get('/express',function(req,res,next){
+websocketRouter.get('/tokenverify',function(req,res,next){
     console.error(111)
-    console.log()
-    next(111)
+    res.send('token verify successful!!')
     
 })
 

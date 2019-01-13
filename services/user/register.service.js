@@ -14,13 +14,25 @@ const register = {
             "password":req.body["password"],
             "nickname":req.body["nickname"]
         }
-       
+        
+        let ifLackMessage = judgeLackMessage(userInfo)
         let ifRepeat = judgeRepeatUser(userInfo.userName)
-        if(ifRepeat === true){
+        if(ifLackMessage === true){
+            returnMsg.msg = " Please send full user message!"
+            res.send(returnMsg)
+        }else if(ifRepeat === true){
             returnMsg.msg = userInfo.userName +" repeat,try other username!"
             res.send(returnMsg)
-        }else{
+        } else{
             insertUser(userInfo)
+        }
+
+        function judgeLackMessage(userinfo){
+            if(userInfo.userName && userinfo.password){
+                return true
+            } else{
+                return false
+            }
         }
 
         function judgeRepeatUser(thisUserName){
