@@ -11,14 +11,14 @@ const loginService = {
             "msg":"",
             "data":{}
         }
-
         //high  efficiency  for 
         for(let i=0 , item; item = globalAllUsers[i++];){
             if(item["userName"] === userName && item["password"]===password){
 
                 console.log('this user is in golbalAllUsers' + userName)
-                
-                let usertoken =  jwt.sign({item},'secretkey',{expiresIn:60*60})
+                console.log(global.tokenPrivate)
+                console.log(global.tokenPublic)
+                let usertoken =  jwt.sign({item,exp:Math.floor(Date.now()/1000)+60*60},global.tokenPrivate,{algorithm:"RS256"})
                     console.log(userName + ': '+ usertoken)
                     returnMsg.flag = true;
                     returnMsg.msg = "login success!";
@@ -41,7 +41,8 @@ const loginService = {
         if(typeof thisHeaderToken !== 'undefined'){
             let thisToken = thisHeaderToken.split(' ')[1];
             req.token = thisToken;
-            let decode = jwt.verify(thisToken,'secretkey');
+            console.log(global.tokenPublic)
+            let decode = jwt.verify(thisToken,global.tokenPublic,{algorithms:"RS256"});
             if(decode){
                 console.log(decode)
                 next()

@@ -13,6 +13,14 @@ const init = {
         }
         globalAllUsers = allUsers
 
+    },
+    getTokenPrivate:function(){
+        let privateKey = fs.readFileSync(mainConfig.privateKey)
+        return privateKey
+    },
+    getTokenPublic:function(){
+        let publicKey = fs.readFileSync(mainConfig.publicKey)
+        return publicKey
     }
 }
 

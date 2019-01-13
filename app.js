@@ -11,7 +11,11 @@ const initAll = require('./services/initProject/init.service')
 const tokenVerify =require('./services/user/user.login.service')
 
 global.globalAllUsers = []
+global.tokenPrivate = ""
+global.tokenPublic = ""
 initAll.getUsers()
+global.tokenPrivate = initAll.getTokenPrivate()
+global.tokenPublic = initAll.getTokenPublic()
 
 
 // app.use(cors())
