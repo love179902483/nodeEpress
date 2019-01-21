@@ -6,3 +6,5 @@
 {"userName":"admin001","password":"123456","nickname":"么么哒"}
 {"userName":"qinyu","password":"123456","nickname":"小丢丢"}
 {"userName":"张家庭","password":"123456","nickname":"呵呵呵"}
+{"userName":"刘鑫磊","password":"123456","nickname":"卡哇伊"}
+{"userName":"admin123","password":"123456","nickname":"hello"}

@@ -10,24 +10,28 @@ const server = websocket.createServer(function(conn){
         switch(data.type){
             case "setname":
                 conn.name = data.userMsg.username
+                conn.nickname = data.userMsg.nickname
                 brodcast.brodcast(server,data.userMsg.nickname + "加入了聊天空间哦！！！！")
                 break
             case "chat":
-                console.log(userData.text)
-                console.log(conn.name + '说:'+ data.text)
-                brodcast.brodcast(server,conn.name + '说:'+ data.text)
+                console.log(conn.nickname + '说:'+ data.text)
+                brodcast.brodcast(server,conn.nickname + '说:'+ data.text)
+                break
+            default:
+                brodcast.brodcast(server,"欢迎来到这里！！")
         }
-        // brodcast.brodcast(server,str)
     })
 
     conn.on("close",function(code,reason){
         console.log(reason)
         console.log(code)
+        brodcast.brodcast(server,conn.name + "离开了聊天房间！！！")
         
     })
 
     conn.on("error",function(err){
-        console.error(err)  
+        console.error(err)
+          
     })
 
 }).listen(2001)
