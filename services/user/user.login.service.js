@@ -9,7 +9,12 @@ const loginService = {
         let returnMsg = {
             "flag":false,
             "msg":"",
-            "data":{}
+            "data":{
+                "userMsg":{
+                    "username":"",
+                    "nickname":"",
+                }
+            }
         }
         //high  efficiency  for 
         for(let i=0 , item; item = globalAllUsers[i++];){
@@ -22,7 +27,8 @@ const loginService = {
                     console.log(userName + ': '+ usertoken)
                     returnMsg.flag = true;
                     returnMsg.msg = "login success!";
-                    returnMsg.data["nickname"] = item.nickname; 
+                    returnMsg.data["userMsg"]["username"] = item.userName; 
+                    returnMsg.data["userMsg"]["nickname"] = item.nickname; 
                     returnMsg.data["token"] = usertoken
                     res.json(returnMsg)
                     return
@@ -45,7 +51,7 @@ const loginService = {
             let decode = jwt.verify(thisToken,global.tokenPublic,{algorithms:"RS256"});
             if(decode){
                 console.log(decode)
-                next()
+                res.send(decode)
                 
             }else{
                 res.sendStatus(403)

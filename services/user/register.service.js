@@ -17,12 +17,14 @@ const register = {
         
         let ifLackMessage = judgeLackMessage(userInfo)
         let ifRepeat = judgeRepeatUser(userInfo.userName)
-        if(ifLackMessage === true){
+        if(ifLackMessage === false){
             returnMsg.msg = " Please send full user message!"
             res.send(returnMsg)
-        }else if(ifRepeat === true){
+            return
+        }else if(ifRepeat === false){
             returnMsg.msg = userInfo.userName +" repeat,try other username!"
             res.send(returnMsg)
+            return
         } else{
             insertUser(userInfo)
         }
@@ -38,10 +40,10 @@ const register = {
         function judgeRepeatUser(thisUserName){
             for(let i=0,item;item = globalAllUsers[i++];){
                 if(item.userName === thisUserName){
-                    return true
+                    return false
                 }
             }
-            return false
+            return true
         }
 
         
@@ -51,10 +53,14 @@ const register = {
             if(insertFlag === true){
                 returnMsg.flag = true;
                 returnMsg.msg ="register  successful!"
+                console.log(JSON.stringify(returnMsg))
                 res.send(returnMsg)
+                return
             }else{
                 returnMsg.msg = "register fail!!"
+                console.error(JSON.stringify(returnMsg))
                 res.send(returnMsg)
+                return
             }
         }
 
@@ -63,7 +69,5 @@ const register = {
        
     }
 }
-
-module.exports = register;
 
 module.exports = register;

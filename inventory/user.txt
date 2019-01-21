@@ -2,3 +2,7 @@
 {"userName":"admin11","password":"123456","nickname":"秦宇"}
 {"userName":"admin1２","password":"123456","nickname":"秦宇"}
 {"userName":"admin1111","password":"123456","nickname":"秦宇"}
+{"userName":"admin01","password":"123456","nickname":"么么哒"}
+{"userName":"admin001","password":"123456","nickname":"么么哒"}
+{"userName":"qinyu","password":"123456","nickname":"小丢丢"}
+{"userName":"张家庭","password":"123456","nickname":"呵呵呵"}
